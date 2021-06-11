@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head');%>
+</head>
+
+<body class="container">
+    <header>
+        <%- include('../partials/header');%>
+    </header>
+    <main>
+        <div id="content">
+            <div class="page_title"><b><h1>CẬP NHẬT MÔN HỌC</h1></b></div>
+            <div class="row">
+                <div class="col-5">
+                    <form method="POST" action="/subject">
+                        <div class="mb-3">
+                            <label for="txtMamon" class="form-label">Mã môn học</label>
+                            <input type="text" class="form-control" id="txtMamon" name="mamon">
+                        </div>
+                        <div class="mb-3">
+                            <label for="txtTenmon" class="form-label">Tên môn học</label>
+                            <input type="text" class="form-control" id="txtTenmon" name="tenmon">
+                        </div>
+                        <div class="mb-3">
+                            <label for="txtSotinchi" class="form-label">Số tín chỉ</label>
+                            <input type="text" class="form-control" id="txtSotinchi" name="sotinchi">
+                        </div>
+                        <button type="submit" class="btn btn-primary" name="btn_Them">Thêm</button>
+                    </form>
+                </div>
+                <div class="col-7">
+                    <div class="table-responsive scrollable vien mb-2 mt-2">
+                        <table class="table table-white table-hover" id="tbSubject">
+                            <thead class="thead-light">
+                                <tr>
+                                    <!-- <th>STT</th> -->
+                                    <th>Mã môn học</th>
+                                    <th>Tên môn học</th>
+                                    <th>Số tín chỉ</th>
+                                    <th>Sửa, Xóa</th>
+                                </tr>
+                            </thead>
+                            <tbody id="myTable">
+                                <% dataMh.forEach(function(data){ %>
+                                    <tr>
+                                        <td>
+                                            <%= data.mamon %>
+                                        </td>
+                                        <td>
+                                            <%= data.tenmon %>
+                                        </td>
+                                        <td>
+                                            <%= data.sotinchi %>
+                                        </td>
+                                        <td>
+                                            <a href="/subject/editsubject/<%- data._id %>"><img src="/img/icon_edit.png"
+                                                    alt=""></a>
+                                            <a href="/subject/deletesubject/<%- data._id %>" data-bs-toggle="modal"
+                                                data-bs-target="#delete_subject" data-bs-id="<%- data._id%>"><img
+                                                    src="/img/icon_delete.png" alt=""></a>
+                                        </td>
+                                    </tr>
+                                    <% }); %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <%- include('../partials/footer');%>
+    </footer>
+</body>
+<%- include('../partials/js');%>
+    <!--Modal-->
+    <div class="modal fade" id="delete_subject" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Xóa môn học</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Bạn có chắc chắn muốn xóa không ?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Hủy</button>
+                    <button id="btn_delete_subject" type="button" class="btn btn-danger">Xóa</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--deleteForm-->
+    <form name="delete_subject_form" method="POST"></form>
+    <!--scripts-->
+    <script>
+        var subjectId;
+        var exampleModal = document.getElementById('delete_subject');
+        var deleteForm = document.forms['delete_subject_form'];
+        var btnDeleteSubject = document.getElementById('btn_delete_subject');
+
+        exampleModal.addEventListener('show.bs.modal', function (event) {
+            var button = event.relatedTarget
+            subjectId = button.getAttribute('data-bs-id');
+        })
+        //console.log(btnDeleteClass)
+        btnDeleteSubject.onclick = function () {
+            deleteForm.action = '/subject/deletesubject/' + subjectId;
+            deleteForm.submit();
+        }
+    </script>
+
+</html>

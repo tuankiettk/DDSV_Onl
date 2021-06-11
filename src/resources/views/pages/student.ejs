@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head');%>
+</head>
+
+<body class="container">
+    <header>
+        <%- include('../partials/header');%>
+    </header>
+    <main>
+        <div id="content">
+            <form method="POST" action="/student">
+                <div class="page_title"><b><h1>CẬP NHẬT SINH VIÊN</h1></b></div>
+                <div class="row">
+                    <div class="col-2"></div>
+                    <div class="col-4">
+                        <div class="mb-3">
+                            <label for="txt_path" class="form-label">MSSV</label>
+                            <input type="text" class="form-control" id="txt_path" name="mssv">
+                        </div>
+                        <div class="mb-3">
+                            <label for="txt_path" class="form-label">Họ tên sinh viên</label>
+                            <input type="text" class="form-control" id="txt_path" name="hoten">
+                        </div>
+                        <div class="mb-3">
+                            <label for="txt_path" class="form-label">Ngày sinh</label>
+                            <input type="text" class="form-control" id="txt_path" name="ngaysinh">
+                        </div>
+                        <div class="mb-3">
+                            <label for="txt_path" class="form-label">Giới tính</label>
+                            <select name="gioitinh" id="">
+                                <option selected disabled>--Chọn giới tính--</option>
+                                <option value="Nam">Nam</option>
+                                <option value="Nữ">Nữ</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="mb-3">
+                            <label for="txt_path" class="form-label">Địa chỉ</label>
+                            <input type="text" class="form-control" id="txt_path" name="diachi">
+                        </div>
+                        <div class="mb-3">
+                            <label for="txt_path" class="form-label">Điện thoại</label>
+                            <input type="text" class="form-control" id="txt_path" name="sdt">
+                        </div>
+                        <div class="mb-3">
+                            <label for="txt_path" class="form-label">Mã lớp</label>
+                            <input type="text" class="form-control" id="txt_path" name="malop">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" name="btn_Them">Thêm</button>
+                    </div>
+                    <div class="col-2"></div>
+                </div>
+            </form>
+            <div class="row">
+                <div class="col-12">
+                    <div class="table-responsive scrollable vien mb-2 mt-2">
+                        <table class="table table-white table-hover">
+                            <thead class="thead-light">
+                                <tr>
+                                    <!-- <th>STT</th> -->
+                                    <th>MSSV</th>
+                                    <th>Tên sinh viên</th>
+                                    <th>Ngày sinh</th>
+                                    <th>Giới Tính</th>
+                                    <th>Địa chỉ</th>
+                                    <th>Điện thoại</th>
+                                    <th>Mã lớp</th>
+                                    <th>Sửa, Xóa</th>
+                                </tr>
+                            </thead>
+                            <% dataSv.forEach(function(data){ %>
+                                <tbody id="myTable">
+                                    <tr>
+                                        <td>
+                                            <%= data.mssv %>
+                                        </td>
+                                        <td>
+                                            <%= data.hoten %>
+                                        </td>
+                                        <td>
+                                            <%= data.ngaysinh %>
+                                        </td>
+                                        <td>
+                                            <%= data.gioitinh %>
+                                        </td>
+                                        <td>
+                                            <%= data.diachi %>
+                                        </td>
+                                        <td>
+                                            <%= data.sdt %>
+                                        </td>
+                                        <td>
+                                            <%= data.malop %>
+                                        </td>
+                                        <td>
+                                            <a href="/student/editstudent/<%- data._id%>"><img src="/img/icon_edit.png"
+                                                    alt=""></a>
+                                            <a href="" data-bs-toggle="modal" data-bs-target="#delete_student"
+                                                data-bs-id="<%- data._id%>"><img src="/img/icon_delete.png" alt=""></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <% }); %>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+    <footer>
+        <%- include('../partials/footer');%>
+    </footer>
+</body>
+<%- include('../partials/js');%>
+
+    <!--Modal-->
+    <div class="modal fade" id="delete_student" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Xóa sinh viên</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Bạn có chắc chắn muốn xóa không ?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Hủy</button>
+                    <button id="btn_delete_student" type="button" class="btn btn-danger">Xóa</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--deleteForm-->
+    <form name="delete_student_form" method="POST"></form>
+    <!--scripts-->
+    <script>
+        var studentId;
+        var exampleModal = document.getElementById('delete_student');
+        var deleteForm = document.forms['delete_student_form'];
+        var btnDeleteStudent = document.getElementById('btn_delete_student');
+
+        exampleModal.addEventListener('show.bs.modal', function (event) {
+            var button = event.relatedTarget
+            studentId = button.getAttribute('data-bs-id');
+        })
+        //console.log(btnDeleteClass)
+        btnDeleteStudent.onclick = function () {
+            deleteForm.action = '/student/deletestudent/' + studentId;
+            deleteForm.submit();
+        }
+    </script>
+
+</html>

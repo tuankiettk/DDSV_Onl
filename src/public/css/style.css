@@ -1,0 +1,206 @@
+html{
+    background-color:#ccc;
+}
+
+.container{
+     max-width: 960px;
+     background-color:whitesmoke;
+     padding: 0;
+ }
+ .row {
+     margin: 10px 5px;
+ }
+ .page_title {
+     text-align: center;
+     color: blue;
+     margin: 10px 0px;
+ }
+ .btn_diemdanh {
+    margin-left: 170px;
+    width: 200px;
+ }
+ .btn_thoat{
+     margin: 0 10px;
+     width: 150px;
+ }
+ #header .navbar{
+     color: white;
+ }
+ #navbarDropdown{
+     color: white;
+ }
+ #header .header-bg{
+     background-image: url('/img/background.jpg');
+     margin: 0;
+     color:red;
+     height: 153px;
+     
+ }
+
+ .img-account{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.user-account {
+    margin-left: 5px;
+    margin-top: 10px;
+}
+
+.navbar{
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+ /*#header .left-img{
+     background-image: url('/img/dnc-removebg-preview.png');
+     width: 100%;
+     height: 153px;
+     background-repeat: no-repeat;
+     background-size: contain;
+ }
+ #header .right-img{
+     background-image: url('/img/sinhvien-removebg-preview.png');
+     width: 100%;
+     height: 153px;
+     background-repeat: no-repeat;
+     background-size: contain;
+ }*/
+ 
+ #header .title{
+     text-align: center;
+     padding: 32px 0px;
+     /* background-image: url('/img/banner_congthongtinhssv.jpg'); */
+ }
+ #content .chaomung{
+     text-align: center;
+     height: 350px;
+ }
+ 
+ #content .text-chaomung{
+     padding: 120px 0px;
+ }
+ /* dang nhap */
+ @import url('https://fonts.googleapis.com/css?family=Numans');
+ 
+ 
+ 
+ .container{
+     height: 100%;
+     align-content: center;
+ }
+ 
+ .card{
+     height: 320px;
+     margin-top: 30px;
+     margin-bottom: 30px;
+ 
+     background-color: rgba(0,0,0,0.5) !important;
+ }
+ 
+ .social_icon span{
+     font-size: 60px;
+     margin-left: 10px;
+     color: yellow;
+ }
+ 
+ .social_icon span:hover{
+     color: white;
+     cursor: pointer;
+ }
+ 
+ .card-header h3{
+     color: white;
+ }
+ 
+ .social_icon{
+     position: absolute;
+     right: 20px;
+     top: -45px;
+ }
+ 
+ .input-group{
+     padding-bottom: 20px;
+ }
+ 
+ .input-group-prepend span{
+     width: 50px;
+     height: 40px;
+     background-color: #FFC312;
+     color: black;
+     border:0 !important;
+ }
+ 
+ input:focus{
+     outline: 0 0 0 0  !important;
+     box-shadow: 0 0 0 0 !important;
+ 
+ }
+ 
+ .remember{
+     color: white;
+     padding-bottom: 20px;
+ }
+ 
+ .remember input
+ {
+     width: 20px;
+     height: 20px;
+     margin-left: 15px;
+     margin-right: 5px;
+ }
+ 
+ .login_btn{
+     color: black;
+     background-color: #FFC312;
+     width: 100px;
+     float: right;
+ }
+ 
+ .login_btn:hover{
+     color: black;
+     background-color: white;
+ }
+ 
+ .links{
+     color: white;
+ }
+ 
+ .links a{
+     margin-left: 4px;
+ }
+ /* page Lop  */
+ /* table */
+ .scrollable {
+     position: relative;
+     height: 300px;
+     overflow: auto;
+     display: block;
+ }
+ .vien {
+     border: 3px solid black !important;
+ }
+
+ #footer{
+     height: 100px;
+     background-color: #0d6efd;
+ }
+ 
+ #footer .footer-text {
+     color: white;
+     text-align: center;
+     padding-top: 16px;
+ }
+ 
+ #footer .footer-text a{
+     color: white;
+ }
+
+
+ 
+.btn_search{
+    margin-top: 30px;
+}
+

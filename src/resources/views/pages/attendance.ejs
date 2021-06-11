@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head');%>
+</head>
+
+<body class="container">
+    <header>
+        <%- include('../partials/header');%>
+    </header>
+    <main>
+        <div id="content">
+            <form method="POST" action="/attendence">
+                <div class="row">
+                    <div class="col-2"></div>
+                    <div class="col-4">
+                        <div class="mb-3">
+                            <label for="txtMadiemdanh" class="form-label">Mã điểm danh</label>
+                            <input type="text" class="form-control" id="txtMadiemdanh" name="madiemdanh">
+                        </div>
+                        <div class="mb-3">
+                            <label for="txtMalop" class="form-label">MSSV</label>
+                            <input type="text" class="form-control" id="txtMalop" name="mssv">
+                        </div>
+                        <div class="mb-3">
+                            <label for="txtMSSV" class="form-label">Họ tên sinh viên</label>
+                            <input type="text" class="form-control" id="txtMSSV" name="hoten">
+                        </div>
+                        <div class="mb-3">
+                            <label for="txtMSSV" class="form-label">Tên lớp</label>
+                            <input type="text" class="form-control" id="txtMSSV" name="malop">
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="mb-3">
+                            <label for="txtTenmon" class="form-label">Tên môn</label>
+                            <input type="text" class="form-control" id="txtTenmon" name="tenmon">
+                        </div>
+                        <div class="mb-3">
+                            <label for="txtNgay" class="form-label">Ngày</label>
+                            <input type="text" class="form-control" id="txtNgay" name="ngay">
+                        </div>
+                        <div class="mb-3">
+                            <label for="txtHocki" class="form-label">Học kì_năm học</label>
+                            <select name="hocki_namhoc" id="">
+                                <option value="">---Học kì - Năm học---</option>
+                                <option value="Học kì I - Năm học 2020-2021">Học kì I - Năm học 2020-2021</option>
+                                <option value="Học kì II - Năm học 2020-2021">Học kì II - Năm học 2020-2021</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="txtBuoi" class="form-label">Buổi</label>
+                            <input type="text" class="form-control" id="txtBuoi" name="buoi">
+                        </div>
+                    </div>
+                    <div class="col-2"></div>
+                    <button type="submit" class="btn_diemdanh btn btn-primary" name="btn_Diemdanh">Điểm danh</button>
+                </div>
+            </form>
+        </div>
+    </main>
+    <footer>
+        <%- include('../partials/footer');%>
+    </footer>
+</body>
+<%- include('../partials/js');%>
+
+</html>

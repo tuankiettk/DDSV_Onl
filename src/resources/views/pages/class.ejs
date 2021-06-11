@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head');%>
+</head>
+
+<body class="container">
+    <header>
+        <%- include('../partials/header');%>
+    </header>
+    <main>
+        <div id="content">
+            <div class="page_title"><b><h1>CẬP NHẬT LỚP</h1></b></div>
+            <div class="row">
+                <div class="col-5">
+                    <form method="POST" action="/class">
+                        <div class="mb-3">
+                            <label for="txtMalop" class="form-label">Mã lớp</label>
+                            <input type="text" class="form-control" id="txtMalop" name="malop">
+
+                        </div>
+                        <div class="mb-3">
+                            <label for="txtTenlop" class="form-label">Tên lớp</label>
+                            <input type="text" class="form-control" id="txtTenlop" name="tenlop">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Thêm</button>
+                    </form>
+                </div>
+                <div class="col-7">
+                    <div class="table-responsive scrollable vien mb-2 mt-2">
+                        <table class="table table-white table-hover">
+                            <thead class="thead-light">
+                                <tr>
+                                    <!-- <th>STT</th> -->
+                                    <th>Mã lớp</th>
+                                    <th>Tên lớp</th>
+                                    <th> Sửa, Xóa</th>
+                                </tr>
+                            </thead>
+                            <tbody id="myTable">
+                                <% dataCl.forEach(function(data){ %>
+                                    <tr>
+                                        <td>
+                                            <%= data.malop %>
+                                        </td>
+                                        <td>
+                                            <%= data.tenlop %>
+                                        </td>
+                                        <td>
+                                            <a href="/class/editclass/<%- data._id%>"><img src="/img/icon_edit.png"
+                                                    alt=""></a>
+                                            <a href="" data-bs-toggle="modal" data-bs-target="#delete_class"
+                                                data-bs-id="<%- data._id%>"><img src="/img/icon_delete.png" alt=""></a>
+                                        </td>
+                                    </tr>
+                                    <% }); %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <%- include('../partials/footer');%>
+    </footer>
+</body>
+<%- include('../partials/js');%>
+    <!--Modal-->
+    <div class="modal fade" id="delete_class" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Xóa lớp học</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Bạn có chắc chắn muốn xóa ?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Hủy</button>
+                    <button id="btn_delete_class" type="button" class="btn btn-danger">Xóa</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--deleteForm-->
+    <form name="delete_class_form" method="POST"></form>
+    <!--scripts-->
+    <script>
+        var classId;
+        var exampleModal = document.getElementById('delete_class');
+        var deleteForm = document.forms['delete_class_form'];
+        var btnDeleteClass = document.getElementById('btn_delete_class');
+
+        exampleModal.addEventListener('show.bs.modal', function (event) {
+            var button = event.relatedTarget
+            classId = button.getAttribute('data-bs-id');
+        })
+        //console.log(btnDeleteClass)
+        btnDeleteClass.onclick = function () {
+            deleteForm.action = '/class/deleteclass/' + classId;
+            deleteForm.submit();
+        }
+    </script>
+
+</html>

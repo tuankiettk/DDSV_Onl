@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head');%>
+</head>
+
+<body class="container">
+    <header>
+        <%- include('../partials/header');%>
+    </header>
+    <main>
+        <div id="content">
+            <div class="page_title"><b><h1>CHỈNH SỬA SINH VIÊN</h1></b></div>
+            <form method="POST" action="/student/updatestudent/<%- dataSv._id%>">
+                <div class="row">
+                    <div class="col-2"></div>
+                    <div class="col-4">
+                        <div class="mb-3">
+                            <label for="txt_path" class="form-label">MSSV</label>
+                            <input type="text" class="form-control" id="txt_mssv" name="mssv" value="<%- dataSv.mssv%>">
+                        </div>
+                        <div class="mb-3">
+                            <label for="txt_path" class="form-label">Họ tên sinh viên</label>
+                            <input type="text" class="form-control" id="txt_hoten" name="hoten"
+                                value="<%- dataSv.hoten%>">
+                        </div>
+                        <div class="mb-3">
+                            <label for="txt_path" class="form-label">Ngày sinh</label>
+                            <input type="text" class="form-control" id="txt_ngaysinh" name="ngaysinh"
+                                value="<%- dataSv.ngaysinh%>">
+                        </div>
+                        <div class="mb-3">
+                            <label for="txt_path" class="form-label">Giới tính</label>
+                            <select name="gioitinh" id="txt_gioitinh" value="<%- dataSv.gioitinh%>">
+                                <option value="">--Chọn giới tính--</option>
+                                <option value="Nam">Nam</option>
+                                <option value="Nữ">Nữ</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="mb-3">
+                            <label for="txt_path" class="form-label">Địa chỉ</label>
+                            <input type="text" class="form-control" id="txt_diachi" name="diachi"
+                                value="<%- dataSv.diachi%>">
+                        </div>
+                        <div class="mb-3">
+                            <label for="txt_path" class="form-label">Điện thoại</label>
+                            <input type="text" class="form-control" id="txt_dienthoai" name="sdt"
+                                value="<%- dataSv.sdt%>">
+                        </div>
+                        <div class="mb-3">
+                            <label for="txt_path" class="form-label">Mã lớp</label>
+                            <input type="text" class="form-control" id="txt_malop" name="malop"
+                                value="<%- dataSv.malop%>">
+                        </div>
+                        <button type="submit" class="btn btn-primary" name="btn_Them">Lưu</button>
+                    </div>
+                    <div class="col-2"></div>
+                </div>
+            </form>
+        </div>
+    </main>
+    <footer>
+        <%- include('../partials/footer');%>
+    </footer>
+</body>
+<%- include('../partials/js');%>
+
+</html>

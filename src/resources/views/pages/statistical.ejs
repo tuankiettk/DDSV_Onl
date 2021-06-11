@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head');%>
+</head>
+
+<body class="container">
+    <header>
+        <%- include('../partials/header');%>
+    </header>
+    <main>
+        <div id="content">
+            <h1 class="mt-4 page_title " style="text-align: center;">THỐNG KÊ SINH VIÊN NGHỈ</h1>
+            <form action="/statistical/search" method="POST">
+                <div class="row">
+                    <div class="col-2"></div>
+                    <div class="col-4">
+                        <div class="mb-3">
+                            <label for="" class="form-label">Chọn sinh viên</label>
+                            <select class="form-select" aria-label="Default select example" id="name_search"
+                                name="name_search">
+                                <option id="first_option" selected disabled>--Chọn sinh viên muốn xem--</option>
+                                <% if(sv !=null){ %>
+                                    <% for(var i=0;i< sv.length; i++){ %>
+                                        <option value="<%- sv[i].mssv %>">
+                                            <%- sv[i].hoten %>
+                                        </option>
+                                        <% } %>
+                                            <% } %>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-3"></div>
+                    <div class="col-3">
+                        <button type="button" id="btn_search" class="btn_search btn btn-primary" name="btn_Timkiem">Tìm kiếm</button>
+                    </div>
+                </div>
+            </form>
+            <div class="row">
+                <h2 class="page_title">Bảng sinh viên vắng học</h2>
+                <div class="col-2"></div>
+                <div class="col-8">
+                    <div class="table-responsive scrollable vien mb-2 mt-2">
+                        <table class="table table-white table-hover">
+                            <thead class="thead-light">
+                                <tr>
+                                    <!-- <th>STT</th> -->
+                                    <th>MSSV</th>
+                                    <th>Tên sinh viên</th>
+                                    <th>Lớp</th>
+                                    <th>Môn</th>
+                                    <th>Ngày</th>
+                                </tr>
+                            </thead>
+                            <tbody id="myTable">
+                                <% if(data !=null){ %>
+                                    <% for(var i=0;i< data.length; i++){ %>
+                                        <tr>
+                                            <td>
+                                                <%- data[i].mssv %>
+                                            </td>
+                                            <td>
+                                                <%- data[i].hoten %>
+                                            </td>
+                                            <td>
+                                                <%- data[i].malop %>
+                                            </td>
+                                            <td>
+                                                <%- data[i].tenmon %>
+                                            </td>
+                                            <td>
+                                                <%- data[i].ngay %>
+                                            </td>
+                                        </tr>
+                                        <% } %>
+                                            <% } %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-2"></div>
+            </div>
+        </div>
+        <!--form-->
+    </main>
+    <footer>
+        <%- include('../partials/footer');%>
+    </footer>
+</body>
+<%- include('../partials/js');%>
+
+</html>

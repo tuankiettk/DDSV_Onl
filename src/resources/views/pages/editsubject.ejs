@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head');%>
+</head>
+
+<body class="container">
+    <header>
+        <%- include('../partials/header');%>
+    </header>
+    <main>
+        <div id="content">
+            <div class="page_title"><b><h1>CHỈNH SỬA MÔN HỌC</h1></b></div>
+            <div class="row">
+                <div class="col-3"></div>
+                <div class="col-6">
+                    <form method="POST" action="/subject/updatesubject/<%- dataMh._id%>">
+                        <div class="mb-3">
+                            <label for="txtMamon" class="form-label">Mã môn học</label>
+                            <input type="text" class="form-control" id="txtMamon" name="mamon"
+                                value="<%- dataMh.mamon%>">
+                        </div>
+                        <div class="mb-3">
+                            <label for="txtTenmon" class="form-label">Tên môn học</label>
+                            <input type="text" class="form-control" id="txtTenmon" name="tenmon"
+                                value="<%- dataMh.tenmon%>">
+                        </div>
+                        <div class="mb-3">
+                            <label for="txtSotinchi" class="form-label">Số tín chỉ</label>
+                            <input type="text" class="form-control" id="txtSotinchi" name="sotinchi"
+                                value="<%- dataMh.sotinchi%>">
+                        </div>
+                        <button type="submit" class="btn btn-primary" name="btn_Them">Lưu</button>
+                    </form>
+                </div>
+                <div class="col-3"></div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <%- include('../partials/footer');%>
+    </footer>
+</body>
+<%- include('../partials/js');%>
+
+</html>
